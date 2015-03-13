@@ -9,7 +9,7 @@
 #import "TabBarController.h"
 
 #define INTERFACE_ORIENTATION() ([[UIApplication sharedApplication]statusBarOrientation])
-
+#define ISIOS7ANDABOVE() ([[UIDevice currentDevice] systemVersion].floatValue<8.0)
 @interface TabBarController ()
 
 @end
@@ -41,10 +41,19 @@
 - (void) adaptToOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
-        [self setSelectedIndex:1];
+        [self setSelectedIndex:ISIOS7ANDABOVE()?1:0];
     else
-        [self setSelectedIndex:0];
+        [self setSelectedIndex:ISIOS7ANDABOVE()?0:1];
 }
+
+#pragma mark - rotation method for iOS8
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self adaptToOrientation:INTERFACE_ORIENTATION()];
+}
+
+#pragma mark - rotation method for iOS7
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
 {
     [self adaptToOrientation:interfaceOrientation];
@@ -52,7 +61,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self adaptToOrientation:INTERFACE_ORIENTATION()];
+    if (ISIOS7ANDABOVE())
+        [self adaptToOrientation:INTERFACE_ORIENTATION()];
 }
 
 @end
