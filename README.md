@@ -1,9 +1,15 @@
 # AlternativeLayouts
-Simple demo project for alternative iOS layouts for portrait and landscape using UITabBarController
-Having 2 tabs:
+A simple iOS project to demo alternative iOS layouts using UITabBarController
+It has 2 tabs:
 
 - Tab index 0 is used in Portrait mode.
 - Tab index 1 is used in Landscape mode.
+
+When device is rotated, the corresponding view will be shown. It was used when you want to show different views in different orientation.
+
+![](Portrait.jpg)
+
+![](Landscape.jpg)
 
 Original problem was described in [stackoverflow] [1].
 
