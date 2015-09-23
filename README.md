@@ -7,9 +7,9 @@ It has 2 tabs:
 
 When device is rotated, the corresponding view will be shown. It was used when you want to show different views in different orientation.
 
-![](Portrait.png)
+![border: 1px](Portrait.png)
 
-![](Landscape.png)
+![border: 1px](Landscape.png)
 
 Original problem was described in [stackoverflow] [1].
 
