@@ -50,7 +50,8 @@
 - (void)viewWillTransitionToSize:(CGSize)size
        withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    [self adaptToOrientation:INTERFACE_ORIENTATION()];
+    [self adaptToOrientation:size.width>size.height?UIInterfaceOrientationPortrait:UIInterfaceOrientationLandscapeLeft];
+
 }
 
 #pragma mark - rotation method for iOS7
